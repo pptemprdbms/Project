@@ -5,9 +5,18 @@ from article.models import Article
 from datetime import datetime
 from django.http import Http404
 from django.contrib.syndication.views import Feed 
-# Create your views here.
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger  #添加包
+
 def home(request):
-    post_list = Article.objects.all()  #get all objects from Article
+    posts = Article.objects.all()  #Get all objects from Article
+    paginator = Paginator(posts, 2) #show 2 per page
+    page = request.GET.get('page')
+    try :
+        post_list = paginator.page(page)
+    except PageNotAnInteger :
+        post_list = paginator.page(1)
+    except EmptyPage :
+        post_list = paginator.paginator(paginator.num_pages)
     return render(request, 'home.html', {'post_list' : post_list})
 
 def detail(request, id):
