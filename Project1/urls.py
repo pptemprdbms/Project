@@ -13,8 +13,8 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.shortcuts import render
+from django.http import HttpResponse
 
 urlpatterns = patterns('',
     # Examples:
@@ -27,4 +27,5 @@ urlpatterns = patterns('',
     url(r'^archives/$', 'article.views.archives', name = 'archives'),
     url(r'^aboutme/$', 'article.views.about_me', name = 'about_me'),
     url(r'^tag(?P<tag>\w+)/$', 'article.views.search_tag', name = 'search_tag'),
+    url(r'^search/$','article.views.blog_search', name = 'search'),
 )
