@@ -5,7 +5,7 @@ from article.models import Article
 from datetime import datetime
 from django.http import Http404
 from django.contrib.syndication.views import Feed 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger  #添加包
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 
 def home(request):
     posts = Article.objects.all()  #Get all objects from Article
