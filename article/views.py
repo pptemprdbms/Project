@@ -5,5 +5,5 @@ from datetime import datetime
 
 # Create your views here.
 def home(request):
-    post_list = Article.objects.all()  #获取全部的Article对象
+    post_list = Article.objects.all()  #get all objects of Article
     return render(request, 'home.html', {'post_list' : post_list})
