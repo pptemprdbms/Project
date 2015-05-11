@@ -7,7 +7,7 @@ from django.http import Http404
 
 # Create your views here.
 def home(request):
-    post_list = Article.objects.all()  #获取全部的Article对象
+    post_list = Article.objects.all()  #get all objects from Article
     return render(request, 'home.html', {'post_list' : post_list})
 
 def detail(request, id):
