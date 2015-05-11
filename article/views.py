@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
     posts = Article.objects.all()  #Get all objects from Article
-    paginator = Paginator(posts, 2) #show 2 per page
+    paginator = Paginator(posts, 2) #show 2 blogs per page
     page = request.GET.get('page')
     try :
         post_list = paginator.page(page)
@@ -32,7 +32,7 @@ def archives(request) :
     except Article.DoesNotExist :
         raise Http404
     return render(request, 'archives.html', {'post_list' : post_list, 
-                                            'error' : False}))
+                                            'error' : False})
 
 def about_me(request) :
     return render(request, 'aboutme.html')
